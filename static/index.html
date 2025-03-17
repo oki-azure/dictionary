@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dictionary App</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<h1>Dictionary App</h1>
+
+<div class="slider">
+    <div class="item">
+        <h3>Search a Word</h3>
+        <input type="text" id="searchWord" placeholder="Enter a word" oninput="getSuggestions()">
+        <div id="suggestions"></div>
+        <button onclick="searchWord()">Search</button>
+        <p id="result"></p>
+    </div>
+    
+    <div class="item">
+        <h3>Add a New Word</h3>
+        <input type="text" id="newWord" placeholder="Word">
+        <input type="text" id="newMeaning" placeholder="Meaning">
+        <button onclick="addWord()">Add</button>
+        <p id="addResult"></p>
+    </div>
+    
+    <div class="item">
+        <h3>Update a Word</h3>
+        <input type="text" id="updateWord" placeholder="Enter word to update">
+        <input type="text" id="updateMeaning" placeholder="New Meaning">
+        <button onclick="updateWord()">Update</button>
+        <p id="updateResult"></p>
+    </div>
+    
+    <div class="item">
+        <h3>Delete a Word</h3>
+        <input type="text" id="deleteWord" placeholder="Enter word to delete">
+        <button onclick="deleteWord()">Delete</button>
+        <p id="deleteResult"></p>
+    </div>
+    <div class="item">
+        <h3>All Words</h3>
+        <button onclick="fetchAllWords()">Show All Words</button>
+        <div id="wordList"></div>
+    </div>
+    
+</div>
+
+<!-- Navigation Buttons -->
+<div class="slider-controls">
+    <button id="prev">&lt;</button>
+    <button id="next">&gt;</button>
+</div>
+
+<script src="static/script.js"></script>
+<script>
+    let items = document.querySelectorAll('.slider .item');
+    let next = document.getElementById('next');
+    let prev = document.getElementById('prev');
+    let active = 0;
+
+    function loadShow() {
+        let stt = 0;
+        items[active].style.transform = `none`;
+        items[active].style.zIndex = 1;
+        items[active].style.filter = 'none';
+        items[active].style.opacity = 1;
+        
+        for (var i = active + 1; i < items.length; i++) {
+            stt++;
+            items[i].style.transform = `translateX(${120 * stt}px) scale(${1 - 0.2 * stt}) perspective(16px) rotateY(-1deg)`;
+            items[i].style.zIndex = -stt;
+            items[i].style.filter = 'blur(5px)';
+            items[i].style.opacity = stt > 2 ? 0 : 0.6;
+        }
+        
+        stt = 0;
+        for (var i = active - 1; i >= 0; i--) {
+            stt++;
+            items[i].style.transform = `translateX(${-120 * stt}px) scale(${1 - 0.2 * stt}) perspective(16px) rotateY(1deg)`;
+            items[i].style.zIndex = -stt;
+            items[i].style.filter = 'blur(5px)';
+            items[i].style.opacity = stt > 2 ? 0 : 0.6;
+        }
+    }
+    
+    loadShow();
+    
+    next.onclick = function () {
+        active = active + 1 < items.length ? active + 1 : active;
+        loadShow();
+    };
+    
+    prev.onclick = function () {
+        active = active - 1 >= 0 ? active - 1 : active;
+        loadShow();
+    };
+</script>
+
+</body>
+</html>

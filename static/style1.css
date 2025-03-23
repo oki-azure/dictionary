@@ -1,0 +1,120 @@
+body {
+  background-image: 
+      linear-gradient(
+          to top right, #487cec, #ffffff
+      );
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  flex-direction: column;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjusted for better spacing */
+  overflow: hidden;
+}
+
+.item {
+  position: absolute;
+  width: 220px; /* Slightly wider */
+  height: 350px; /* Slightly taller */
+  text-align: justify;
+  background-color: #fff;
+  border-radius: 15px; /* Increased rounding */
+  padding: 25px; /* Increased padding */
+  transition: 0.5s;
+  left: calc(50% - 120px);
+  top: 10px; /* Added spacing from top */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px; /* Added padding for spacing */
+  margin: 8px 0; /* Added margin for spacing */
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Rounded corners */
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+button {
+  background-color: #487cec;
+  color: white;
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  padding: 10px 20px; /* Added padding for spacing */
+  margin-top: 10px; /* Added spacing */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #365bbd; /* Darker shade for hover */
+}
+
+#next, #prev {
+  position: absolute;
+  top: 40%;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  font-size: xxx-large;
+  font-family: monospace;
+  font-weight: bold;
+  left: 400px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#next {
+  left: unset;
+  right: 400px;
+}
+
+#next:hover, #prev:hover {
+  color: #487cec; /* Hover color change */
+}
+
+#wordList {
+  max-height: 200px; /* Adjust height as needed */
+  overflow-y: auto;
+  padding: 10px;
+  margin-top: 15px; /* Increased margin for spacing */
+  background: #fff;
+  font-family: monospace;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.word-entry {
+  margin-bottom: 15px;
+  padding: 12px; /* Added padding for a cleaner look */
+  border-bottom: 1px solid #ddd;
+  border-radius: 5px; /* Rounded edges for each entry */
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.word-entry:last-child {
+  border-bottom: none;
+}
+
+.word-title {
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+.word-meaning {
+  display: block;
+  font-style: italic;
+  color: #555;
+  margin-left: 10px;
+}

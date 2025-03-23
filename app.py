@@ -9,7 +9,7 @@ dictionary.load_from_file("dictionary.json")
 
 @app.route('/')
 def home():
-    return app.send_static_file('index.html')
+    return app.send_static_file('index1.html')
 
 @app.route('/search/<word>', methods=['GET'])
 def search_word(word):

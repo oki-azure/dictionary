@@ -9,7 +9,7 @@ dictionary.load_from_file("dictionary.json")
 
 @app.route('/')
 def home():
-    return app.send_static_file('index1.html')
+    return app.send_static_file('index.html')
 
 @app.route('/search/<word>', methods=['GET'])
 def search_word(word):
@@ -49,4 +49,16 @@ def get_all_words():
     return jsonify(words)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
+
+# Group Members:
+"""  
+Kelvin Agbozo - 20886484
+Setor Yao Avemenku - 20913143
+David Kwame Castel - 20819673
+Klenam Delvin Hottor - 20884236
+Tiindang Martin - 20888690
+Reine Ngamaleu - 21462627
+Jesse Osei-Adu - 20896586
+Gabriel Nii Attoh (Lead Coder) - 20910834
+"""

@@ -1,4 +1,5 @@
 import json
+import random
 
 class Node:
     """A Node in the Binary Search Tree."""
@@ -112,7 +113,9 @@ class BST:
                     words = {}
                 else:
                     words = json.loads(content)
-                for word, meaning in words.items():
+                words = list(words.items())  
+                random.shuffle(words)
+                for word, meaning in words:
                     self.insert(word, meaning)
         except (FileNotFoundError, json.JSONDecodeError):
             with open(filename, "w") as file:
@@ -132,3 +135,15 @@ class BST:
         # Recursively check left and right subtrees
         self._collect_suggestions(node.left, prefix, suggestions)
         self._collect_suggestions(node.right, prefix, suggestions)
+
+# Group Members:
+"""  
+Kelvin Agbozo - 20886484
+Setor Yao Avemenku - 20913143
+David Kwame Castel - 20819673
+Klenam Delvin Hottor - 20884236
+Tiindang Martin - 20888690
+Reine Ngamaleu - 21462627
+Jesse Osei-Adu - 20896586
+Gabriel Nii Attoh (Lead Coder) - 20910834
+"""
